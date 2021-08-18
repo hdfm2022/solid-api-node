@@ -7,10 +7,10 @@ app.listen(3333);
 console.log(new Date());
 console.log("Live");
 
-console.log(new User({email: "hdfmacedo@gmail.com", name: "Henrique", password: "360210"}));
-createUserUseCase.execute({email: "hdfmacedo@gmail.com", name: "Teste", password: "123"});
-setTimeout(
-      () => createUserUseCase.execute({email: "hdfmacedo@gmail.com", name: "Teste", password: "123"})
-    , 1000
-    )
-;
+// console.log(new User({email: "hdfmacedo@gmail.com", name: "Henrique", password: "360210"}));
+// createUserUseCase.execute({email: "hdfmacedo@gmail.com", name: "Teste", password: "123"});
+// setTimeout(
+//       () => createUserUseCase.execute({email: "hdfmacedo@gmail.com", name: "Teste", password: "123"})
+//     , 1000
+//     )
+// ;
