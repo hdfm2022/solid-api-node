@@ -9,6 +9,7 @@ export class MemoryUserRepository implements IUsersRepository {
         const user = this.users.find(user => user.email === email);
         return user;
     }
+    
     async save(user: User): Promise<void> {
         this.users.push(user);
     }

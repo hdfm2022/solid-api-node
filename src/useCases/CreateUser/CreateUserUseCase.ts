@@ -10,7 +10,17 @@ export class CreateUserUseCase {
     ) {
 
     }
-    async execute(data: ICreateUserRequestDTO) {
+    async execute(data: ICreateUserRequestDTO): Promise<User> {
+        if (!data.email) {
+            throw new Error("email field is mandatory");
+        }
+        if (!data.name) {
+            throw new Error("name field is mandatory");
+        }
+        if (!data.password) {
+            throw new Error("password field is mandatory");
+        }
+
         const userAlreadyExists = await this.usersRepository.findByEmail(data.email);
 
         if (userAlreadyExists) {
@@ -21,7 +31,7 @@ export class CreateUserUseCase {
 
         await this.usersRepository.save(user);
 
-        this.mailProvider.sendMail({
+        await this.mailProvider.sendMail({
             to: {
                 name: data.name,
                 email: data.email,
@@ -33,5 +43,7 @@ export class CreateUserUseCase {
             subject: "bem vindo",
             body: "ok",
         })
+
+        return user;
     }
 }
